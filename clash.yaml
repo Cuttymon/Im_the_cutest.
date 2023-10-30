@@ -1,0 +1,78 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+ipv6: true
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+proxies:
+  - name: Reality
+    type: vless
+    server: 193.123.232.176
+    port: 443
+    uuid: 00fda93f-f06e-419b-9c38-86f86e7b2efe
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: itunes.apple.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: QKnyemXJeCGZH_jt5weQGXsmFKZ2lLD_41Kb1KPL4RA
+      short-id: ad9b844e3a13b53f
+
+  - name: Hysteria2
+    type: hysteria2
+    server: 193.123.232.176
+    port: 8443
+    up: "3000 Mbps"
+    down: "3000 Mbps"
+    password: 107a23031ada49b9
+    sni: bing.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - 自动选择
+      - Reality
+      - Hysteria2
+      - DIRECT
+
+  - name: 自动选择
+    type: url-test #选出延迟最低的机场节点
+    proxies:
+      - Reality
+      - Hysteria2
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
+
+rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,节点选择
