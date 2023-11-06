@@ -56,8 +56,8 @@ proxies:
 
   - type: vless
     name: cf
-    server: 172.67.72.39
-    port: 80
+    server: worker-noisy-disk-a28c.hycloud.workers.dev
+    port: 443
     uuid: 69e1d8a6-36c6-481e-a15b-96b3c27457ee
     network: ws
     tls: true
