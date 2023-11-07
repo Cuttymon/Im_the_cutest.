@@ -60,7 +60,7 @@ proxies:
     port: 80
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
-    udp: true
+    udp: false
     ws-opts:
       path: "/?ed=2048"
       headers:
