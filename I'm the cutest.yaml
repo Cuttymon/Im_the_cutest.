@@ -54,6 +54,18 @@ proxies:
     alpn:
       - h3
 
+  - name: cf
+    type: vless
+    server: 2606:4700:9b0b:e78e:bd26:f7e0:af0b:369d
+    port: 80
+    uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
+    network: ws
+    udp: true
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        host: worker-noisy-disk-a28c.hycloud.workers.dev
+
 proxy-groups:
   - name: 节点选择
     type: select
@@ -61,12 +73,14 @@ proxy-groups:
       - 自动选择
       - Reality
       - Hysteria2
+      - cf
 
   - name: 自动选择
     type: url-test
     proxies:
       - Reality
       - Hysteria2
+      - cf
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
