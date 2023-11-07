@@ -55,7 +55,7 @@ proxies:
       - h3
 
   - type: vless
-    name: cf
+    name: ipv6-cf|ip会乱跳
     server: 2606:4700:9b0b:e78e:bd26:f7e0:af0b:369d
     port: 80
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
@@ -76,14 +76,14 @@ proxy-groups:
       - 自动选择
       - Reality
       - Hysteria2
-      - cf
+      - ipv6-cf|ip会乱跳
 
   - name: 自动选择
     type: url-test
     proxies:
       - Reality
       - Hysteria2
-      - cf
+      - ipv6-cf|ip会乱跳
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
