@@ -55,7 +55,7 @@ proxies:
       - h3
 
   - type: vless
-    name: worker-noisy-disk-a28c.hycloud.workers.dev
+    name: cf
     server: 2606:4700:9b0b:e78e:bd26:f7e0:af0b:369d
     port: 80
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
