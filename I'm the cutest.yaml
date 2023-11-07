@@ -54,21 +54,6 @@ proxies:
     alpn:
       - h3
 
-  - type: vless
-    name: cf
-    server: worker-noisy-disk-a28c.hycloud.workers.dev
-    port: 443
-    uuid: 69e1d8a6-36c6-481e-a15b-96b3c27457ee
-    network: ws
-    tls: true
-    udp: false
-    sni: worker-noisy-disk-a28c.hycloud.workers.dev
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        host: worker-noisy-disk-a28c.hycloud.workers.dev
-
 proxy-groups:
   - name: 节点选择
     type: select
@@ -76,14 +61,12 @@ proxy-groups:
       - 自动选择
       - Reality
       - Hysteria2
-      - cf
 
   - name: 自动选择
     type: url-test
     proxies:
       - Reality
       - Hysteria2
-      - cf
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
