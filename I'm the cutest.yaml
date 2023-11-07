@@ -67,7 +67,7 @@ proxies:
     ws-opts:
       path: "/?ed=2048"
       headers:
-        host: worker-noisy-disk-a28c.hycloud.workers.dev
+        Host: worker-noisy-disk-a28c.hycloud.workers.dev
 
 proxy-groups:
   - name: 节点选择
