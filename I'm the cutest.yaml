@@ -56,7 +56,7 @@ proxies:
 
   - type: vless
     name: ipv6-cf  ip会乱跳
-    server: 2606:4700:3037:62ff:6f6:5bb8:bc6b:b766
+    server: 2606:4700:3038:cb63:2619:6c06:100c:2f82
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
