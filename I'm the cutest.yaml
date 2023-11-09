@@ -71,7 +71,7 @@ proxies:
         
   - type: vless
     name: cf  ip会乱跳
-    server: 104.31.16.201
+    server: 198.41.211.83
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
