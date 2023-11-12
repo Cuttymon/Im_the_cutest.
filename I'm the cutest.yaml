@@ -27,7 +27,7 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-  - name: Reality
+  - name: Reality 韩国
     type: vless
     server: 193.123.232.176
     port: 443
@@ -42,13 +42,41 @@ proxies:
       public-key: QKnyemXJeCGZH_jt5weQGXsmFKZ2lLD_41Kb1KPL4RA
       short-id: ad9b844e3a13b53f
 
-  - name: Hysteria2
+  - name: Hysteria2 韩国
     type: hysteria2
     server: 193.123.232.176
     port: 8443
     up: "3000 Mbps"
     down: "3000 Mbps"
     password: 107a23031ada49b9
+    sni: bing.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+
+  - name: Reality 美国
+    type: vless
+    server: 23.94.255.112
+    port: 443
+    uuid: da72b76a-dd87-4bca-8b64-0be47a93ef75
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: itunes.apple.com
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: -Ps8s6tME3XudvOv8muh6v-tv-7GEptEmUIV6gubaDQ
+      short-id: 0d8a01d61c181a3d
+
+  - name: Hysteria2 美国
+    type: hysteria2
+    server: 23.94.255.112
+    port: 8443
+    #  up和down均不写或为0则使用BBR流控
+    up: "3000 Mbps" # 若不写单位，默认为 Mbps
+    down: "3000 Mbps" # 若不写单位，默认为 Mbps
+    password: 35f7f3b7815a780f
     sni: bing.com
     skip-cert-verify: true
     alpn:
@@ -89,11 +117,13 @@ proxy-groups:
     type: select
     proxies:
       - 自动选择
-      - Reality
-      - Hysteria2
+      - Reality 韩国
+      - Hysteria2 韩国
       - ipv6-cf  ip会乱跳
       - cf  ip会乱跳
-
+      - Reality 美国
+      - Hysteria2 美国
+      
   - name: 自动选择
     type: url-test
     proxies:
@@ -101,6 +131,8 @@ proxy-groups:
       - Hysteria2
       - ipv6-cf  ip会乱跳
       - cf  ip会乱跳
+      - Reality 美国
+      - Hysteria2 美国
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
