@@ -31,7 +31,7 @@ proxies:
     type: vless
     server: 193.123.232.176
     port: 443
-    uuid: a11c73cd-fdab-4923-80f6-62cc633e791b
+    uuid: c8c82edb-0fb5-4445-9bd9-351114730739
     network: tcp
     udp: true
     tls: true
@@ -39,8 +39,8 @@ proxies:
     servername: itunes.apple.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: KpupXg1tBx1swnycKm4CjZ26NhCy2T1h2VcD3HNefTQ
-      short-id: 897b4949785dded0
+      public-key: gqUYQ1w1hcz1eYRjnwXPa2xjfVMXBCj3XzfrfDNfQHU
+      short-id: 7b6893a66af7d0b6
 
   - name: Hysteria2 韩国
     type: hysteria2
@@ -49,7 +49,7 @@ proxies:
     #  up和down均不写或为0则使用BBR流控
     up: "3000 Mbps" # 若不写单位，默认为 Mbps
     down: "3000 Mbps" # 若不写单位，默认为 Mbps
-    password: 83efa03ac9ed8ddc
+    password: b3ba90371366f146
     sni: bing.com
     skip-cert-verify: true
     alpn:
