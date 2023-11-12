@@ -127,8 +127,8 @@ proxy-groups:
   - name: 自动选择
     type: url-test
     proxies:
-      - Reality
-      - Hysteria2
+      - Reality  韩国
+      - Hysteria2  韩国
       - ipv6-cf  ip会乱跳
       - cf  ip会乱跳
       - Reality 美国
