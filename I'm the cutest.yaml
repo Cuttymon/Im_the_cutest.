@@ -112,7 +112,7 @@ proxies:
       short-id: b01fca648e7353ca
 
   - type: vless
-    name: ipv6-cf  ip会乱跳
+    name: ipv6-cf 移动 ip会乱跳
     server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
@@ -127,8 +127,23 @@ proxies:
         Host: worker-noisy-disk-a28c.hycloud.workers.dev
         
   - type: vless
-    name: cf  ip会乱跳
+    name: cf 移动 ip会乱跳
     server: 104.17.105.179
+    port: 8880
+    uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
+    network: ws
+    tls: false
+    udp: false
+    sni: worker-noisy-disk-a28c.hycloud.workers.dev
+    client-fingerprint: chrome
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: worker-noisy-disk-a28c.hycloud.workers.dev
+
+  - type: vless
+    name: cf 电信 ip会乱跳
+    server: 104.16.3.101
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
@@ -148,24 +163,26 @@ proxy-groups:
       - 自动选择
       - Reality 韩国
       - Hysteria2 韩国
-      - ipv6-cf  ip会乱跳
-      - cf  ip会乱跳
+      - ipv6-cf 移动 ip会乱跳
+      - cf 移动 ip会乱跳
       - Reality 美国
       - Hysteria2 美国
       - Reality 香港
       - Hysteria2 香港
+      - cf 电信 ip会乱跳
       
   - name: 自动选择
     type: url-test
     proxies:
       - Reality  韩国
       - Hysteria2  韩国
-      - ipv6-cf  ip会乱跳
-      - cf  ip会乱跳
+      - ipv6-cf 移动 ip会乱跳
+      - cf 移动 ip会乱跳
       - Reality 美国
       - Hysteria2 美国
       - Reality 香港
       - Hysteria2 香港
+      - cf 电信 ip会乱跳
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
