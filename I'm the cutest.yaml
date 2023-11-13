@@ -85,7 +85,7 @@ proxies:
 
   - name: Vmess 美国 移动优化
     type: vmess
-    server: 104.17.105.179
+    server: 162.159.134.41
     port: 443
     uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
     alterId: 0
