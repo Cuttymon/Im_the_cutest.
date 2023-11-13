@@ -86,21 +86,21 @@ proxies:
   - name: Hysteria2 香港
     type: hysteria2
     server: 50.114.159.50
-    port: 8444
+    port: 8443
     #  up和down均不写或为0则使用BBR流控
     up: "3000 Mbps" # 若不写单位，默认为 Mbps
     down: "3000 Mbps" # 若不写单位，默认为 Mbps
-    password: 8d01df887b39b28c
+    password: ddab9aec23b13eeb
     sni: bing.com
     skip-cert-verify: true
     alpn:
       - h3
 
-  - name: Reality
+  - name: Reality 香港
     type: vless
     server: 50.114.159.50
     port: 443
-    uuid: e8ebff51-93d3-4478-b853-f4c701b36df3
+    uuid: c30a6e97-f6af-436b-b1ff-783de101da26
     network: tcp
     udp: true
     tls: true
@@ -108,8 +108,8 @@ proxies:
     servername: itunes.apple.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: X1Q13NwSHl03H1iiRzMPNyG3BKxLYZ1BXM0QSHKlXFA
-      short-id: 70397100c283ca25
+      public-key: 54dLB3oZLfOTI2kLb_3aZmKsTkyRyDJG9HY9gty0C2Y
+      short-id: b01fca648e7353ca
 
   - type: vless
     name: ipv6-cf  ip会乱跳
