@@ -83,42 +83,6 @@ proxies:
     alpn:
       - h3
 
-  - name: Vmess 美国 移动优化
-    type: vmess
-    server: 162.159.134.41
-    port: 443
-    uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    client-fingerprint: chrome
-    skip-cert-verify: true
-    servername: planner-solar-habitat-signature.trycloudflare.com
-    network: ws
-    ws-opts:
-      path: bc40642922d1?ed=2048
-      headers:
-        Host: planner-solar-habitat-signature.trycloudflare.com
-
-  - name: ipv6-Vmess 美国 移动优化
-    type: vmess
-    server: 2606:4700:9761:8b6f:6650:ab97:5f4a:eefa
-    port: 443
-    uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    client-fingerprint: chrome
-    skip-cert-verify: true
-    servername: planner-solar-habitat-signature.trycloudflare.com
-    network: ws
-    ws-opts:
-      path: bc40642922d1?ed=2048
-      headers:
-        Host: planner-solar-habitat-signature.trycloudflare.com
-
   - type: vless
     name: ipv6-cf  ip会乱跳
     server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
@@ -160,8 +124,6 @@ proxy-groups:
       - cf  ip会乱跳
       - Reality 美国
       - Hysteria2 美国
-      - Vmess 美国 移动优化
-      - ipv6-Vmess 美国 移动优化
       
   - name: 自动选择
     type: url-test
@@ -172,8 +134,6 @@ proxy-groups:
       - cf  ip会乱跳
       - Reality 美国
       - Hysteria2 美国
-      - Vmess 美国 移动优化
-      - ipv6-Vmess 美国 移动优化
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
