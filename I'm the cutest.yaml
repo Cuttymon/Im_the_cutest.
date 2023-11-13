@@ -86,7 +86,7 @@ proxies:
   - name: Hysteria2 香港
     type: hysteria2
     server: 50.114.159.50
-    port: 8443
+    port: 8444
     #  up和down均不写或为0则使用BBR流控
     up: "3000 Mbps" # 若不写单位，默认为 Mbps
     down: "3000 Mbps" # 若不写单位，默认为 Mbps
@@ -96,7 +96,7 @@ proxies:
     alpn:
       - h3
 
-  - name: Reality 香港
+  - name: Reality
     type: vless
     server: 50.114.159.50
     port: 443
