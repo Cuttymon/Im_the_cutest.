@@ -83,23 +83,6 @@ proxies:
     alpn:
       - h3
 
-  - name: Reality 香港
-    type: vless
-    server: 50.114.159.50
-    port: 443
-    uuid: e8ebff51-93d3-4478-b853-f4c701b36df3
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: itunes.apple.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: X1Q13NwSHl03H1iiRzMPNyG3BKxLYZ1BXM0QSHKlXFA
-      short-id: 70397100c283ca25
-
-
-
   - type: vless
     name: ipv6-cf  ip会乱跳
     server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
