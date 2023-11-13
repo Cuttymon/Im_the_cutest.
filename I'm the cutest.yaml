@@ -103,7 +103,7 @@ proxies:
 
   - name: ipv6-Vmess 美国 移动优化
     type: vmess
-    server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
+    server: 2606:4700:9761:8b6f:6650:ab97:5f4a:eefa
     port: 443
     uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
     alterId: 0
