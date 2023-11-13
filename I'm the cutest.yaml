@@ -102,6 +102,7 @@ proxies:
     type: hysteria2
     server: 50.114.159.50
     port: 8443
+    #  up和down均不写或为0则使用BBR流控
     up: "3000 Mbps" # 若不写单位，默认为 Mbps
     down: "3000 Mbps" # 若不写单位，默认为 Mbps
     password: 8d01df887b39b28c
