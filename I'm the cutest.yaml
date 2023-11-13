@@ -59,7 +59,7 @@ proxies:
     type: vless
     server: 23.94.255.112
     port: 443
-    uuid: d87fd463-564e-4fc6-992d-1c08a034ad50
+    uuid: 08ab55f5-d0f4-4a92-b8f8-7a8ad44bf978
     network: tcp
     udp: true
     tls: true
@@ -67,8 +67,8 @@ proxies:
     servername: itunes.apple.com
     client-fingerprint: chrome
     reality-opts:
-      public-key: 0AgtN3C8YYOh41M_UD6RvsOe6k4i8luFEttDZHcQFiM
-      short-id: 03e7725a550b30a2
+      public-key: -MRxt7safMeqWE0kbQDC1NJMXx4bUG9rGGg3-nXNOX0
+      short-id: 141ff03c94b6ab07
 
   - name: Hysteria2 美国
     type: hysteria2
@@ -77,15 +77,51 @@ proxies:
     #  up和down均不写或为0则使用BBR流控
     up: "3000 Mbps" # 若不写单位，默认为 Mbps
     down: "3000 Mbps" # 若不写单位，默认为 Mbps
-    password: b0e4f7f649bdf454
+    password: ec4a39403fe3b7d8
     sni: bing.com
     skip-cert-verify: true
     alpn:
       - h3
 
+  - name: Vmess 美国 移动优化
+    type: vmess
+    server: 104.17.105.179
+    port: 443
+    uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+    skip-cert-verify: true
+    servername: planner-solar-habitat-signature.trycloudflare.com
+    network: ws
+    ws-opts:
+      path: bc40642922d1?ed=2048
+      headers:
+        Host: planner-solar-habitat-signature.trycloudflare.com
+
+  - name: ipv6-Vmess 美国 移动优化
+    type: vmess
+    server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
+    port: 443
+    uuid: b7b2aa85-6c18-4800-a0dd-6f1a71256bf7
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+    skip-cert-verify: true
+    servername: planner-solar-habitat-signature.trycloudflare.com
+    network: ws
+    ws-opts:
+      path: bc40642922d1?ed=2048
+      headers:
+        Host: planner-solar-habitat-signature.trycloudflare.com
+
   - type: vless
     name: ipv6-cf  ip会乱跳
-    server: 2606:4700:3034:0:98c6:5de7:fe75:1b39
+    server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
@@ -100,7 +136,7 @@ proxies:
         
   - type: vless
     name: cf  ip会乱跳
-    server: 104.29.68.120
+    server: 104.17.105.179
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
@@ -124,6 +160,8 @@ proxy-groups:
       - cf  ip会乱跳
       - Reality 美国
       - Hysteria2 美国
+      - Vmess 美国 移动优化
+      - ipv6-Vmess 美国 移动优化
       
   - name: 自动选择
     type: url-test
@@ -134,6 +172,8 @@ proxy-groups:
       - cf  ip会乱跳
       - Reality 美国
       - Hysteria2 美国
+      - Vmess 美国 移动优化
+      - ipv6-Vmess 美国 移动优化
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
