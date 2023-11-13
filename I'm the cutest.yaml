@@ -83,6 +83,19 @@ proxies:
     alpn:
       - h3
 
+  - name: Hysteria2 香港
+    type: hysteria2
+    server: 50.114.159.50
+    port: 8443
+    #  up和down均不写或为0则使用BBR流控
+    up: "3000 Mbps" # 若不写单位，默认为 Mbps
+    down: "3000 Mbps" # 若不写单位，默认为 Mbps
+    password: 8d01df887b39b28c
+    sni: bing.com
+    skip-cert-verify: true
+    alpn:
+      - h3
+
   - type: vless
     name: ipv6-cf  ip会乱跳
     server: 2606:4700:f4:fc34:d02f:470d:7bf0:4f63
