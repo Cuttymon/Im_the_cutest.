@@ -113,7 +113,7 @@ proxies:
 
   - type: vless
     name: ipv6-cf 移动 ip会乱跳
-    server: 2606:4700:83b4:70f1:c685:f699:53b:cf7c
+    server: 2606:4700:3024:8077:8cb2:a11d:be61:557e
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
@@ -128,7 +128,7 @@ proxies:
         
   - type: vless
     name: cf 移动 ip会乱跳
-    server: 172.64.103.245
+    server: 172.64.98.75
     port: 8880
     uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
     network: ws
