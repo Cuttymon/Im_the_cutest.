@@ -12,35 +12,18 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
-    - 223.5.5.5
-    - 8.8.8.8
+    - https://doh.pub/dns-query
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   fallback:
-    - https://1.0.0.1/dns-query
+    - udp://1.1.1.1
     - tls://dns.google
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
-
-proxies:
-  - name: Reality 韩国
-    type: vless
-    server: 193.123.232.176
-    port: 443
-    uuid: c8c82edb-0fb5-4445-9bd9-351114730739
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: itunes.apple.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: gqUYQ1w1hcz1eYRjnwXPa2xjfVMXBCj3XzfrfDNfQHU
-      short-id: 7b6893a66af7d0b6
 
   - name: Hysteria2 韩国
     type: hysteria2
@@ -54,21 +37,6 @@ proxies:
     skip-cert-verify: true
     alpn:
       - h3
-
-  - name: Reality 美国
-    type: vless
-    server: 23.94.255.112
-    port: 443
-    uuid: 08ab55f5-d0f4-4a92-b8f8-7a8ad44bf978
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: itunes.apple.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: -MRxt7safMeqWE0kbQDC1NJMXx4bUG9rGGg3-nXNOX0
-      short-id: 141ff03c94b6ab07
 
   - name: Hysteria2 美国
     type: hysteria2
@@ -96,106 +64,21 @@ proxies:
     alpn:
       - h3
 
-  - name: Reality 香港
-    type: vless
-    server: 50.114.159.50
-    port: 443
-    uuid: c30a6e97-f6af-436b-b1ff-783de101da26
-    network: tcp
-    udp: true
-    tls: true
-    flow: xtls-rprx-vision
-    servername: itunes.apple.com
-    client-fingerprint: chrome
-    reality-opts:
-      public-key: 54dLB3oZLfOTI2kLb_3aZmKsTkyRyDJG9HY9gty0C2Y
-      short-id: b01fca648e7353ca
-
-  - type: vless
-    name: ipv6-cf 移动 ip会乱跳
-    server: 2606:4700:3024:8077:8cb2:a11d:be61:557e
-    port: 8880
-    uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
-    network: ws
-    tls: false
-    udp: false
-    sni: worker-noisy-disk-a28c.hycloud.workers.dev
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: worker-noisy-disk-a28c.hycloud.workers.dev
-        
-  - type: vless
-    name: cf 移动 ip会乱跳
-    server: 172.64.98.75
-    port: 8880
-    uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
-    network: ws
-    tls: false
-    udp: false
-    sni: worker-noisy-disk-a28c.hycloud.workers.dev
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: worker-noisy-disk-a28c.hycloud.workers.dev
-
-  - type: vless
-    name: cf 电信 ip会乱跳
-    server: 104.16.3.101
-    port: 8880
-    uuid: 00e72f20-d975-4f67-ad1b-04f19d7ee069
-    network: ws
-    tls: false
-    udp: false
-    sni: worker-noisy-disk-a28c.hycloud.workers.dev
-    client-fingerprint: chrome
-    ws-opts:
-      path: "/?ed=2048"
-      headers:
-        Host: worker-noisy-disk-a28c.hycloud.workers.dev
-
-  - name: ip
-    type: hysteria
-    server: hy1.dtku47.xyz
-    port: 22334
-    auth-str: lASdKzWK0VxL
-    alpn:
-      - h3
-    protocol: udp
-    up: "500 Mbps"
-    down: "1000 Mbps"
-
 proxy-groups:
   - name: 节点选择
     type: select
     proxies:
       - 自动选择
-      - Reality 韩国
       - Hysteria2 韩国
-      - ipv6-cf 移动 ip会乱跳
-      - cf 移动 ip会乱跳
-      - Reality 美国
       - Hysteria2 美国
-      - Reality 香港
       - Hysteria2 香港
-      - cf 电信 ip会乱跳
-      - ip
       
   - name: 自动选择
     type: url-test
     proxies:
-      - Reality  韩国
       - Hysteria2  韩国
-      - ipv6-cf 移动 ip会乱跳
-      - cf 移动 ip会乱跳
-      - Reality 美国
       - Hysteria2 美国
-      - Reality 香港
       - Hysteria2 香港
-      - cf 电信 ip会乱跳
-      - ip
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
