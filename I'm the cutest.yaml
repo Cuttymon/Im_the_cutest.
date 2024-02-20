@@ -1,40 +1,25 @@
-port: 7890
-allow-lan: true
-mode: rule
-log-level: info
-unified-delay: true
-global-client-fingerprint: chrome
-ipv6: true
 dns:
   enable: true
-  listen: :53
-  ipv6: true
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  default-nameserver:
-    - https://doh.pub/dns-query
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   fallback:
-    - udp://1.1.1.1
     - tls://dns.google
   fallback-filter:
     geoip: true
-    geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
 
+proxy:
   - name: Hysteria2 韩国
     type: hysteria2
     server: 193.123.232.176
     port: 8443
-    #  up和down均不写或为0则使用BBR流控
-    up: "300 Mbps" # 若不写单位，默认为 Mbps
-    down: "300 Mbps" # 若不写单位，默认为 Mbps
+    up: "300 Mbps" 
+    down: "300 Mbps"
     password: b3ba90371366f146
     sni: bing.com
-    skip-cert-verify: true
     alpn:
       - h3
 
@@ -42,12 +27,10 @@ dns:
     type: hysteria2
     server: 23.94.255.112
     port: 8443
-    #  up和down均不写或为0则使用BBR流控
-    up: "300 Mbps" # 若不写单位，默认为 Mbps
-    down: "300 Mbps" # 若不写单位，默认为 Mbps
+    up: "300 Mbps"
+    down: "300 Mbps"
     password: ec4a39403fe3b7d8
     sni: bing.com
-    skip-cert-verify: true
     alpn:
       - h3
 
@@ -55,35 +38,23 @@ dns:
     type: hysteria2
     server: 50.114.159.50
     port: 8443
-    #  up和down均不写或为0则使用BBR流控
-    up: "300 Mbps" # 若不写单位，默认为 Mbps
-    down: "300 Mbps" # 若不写单位，默认为 Mbps
+    up: "300 Mbps"
+    down: "300 Mbps"
     password: ddab9aec23b13eeb
     sni: bing.com
-    skip-cert-verify: true
     alpn:
       - h3
 
 proxy-groups:
-  - name: 节点选择
-    type: select
-    proxies:
-      - 自动选择
-      - Hysteria2 韩国
-      - Hysteria2 美国
-      - Hysteria2 香港
-      
-  - name: 自动选择
+  - name: Auto Select
     type: url-test
     proxies:
-      - Hysteria2  韩国
+      - Hysteria2 韩国
       - Hysteria2 美国
       - Hysteria2 香港
     url: "http://www.gstatic.com/generate_204"
     interval: 300
-    tolerance: 50
 
 rules:
-  - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,节点选择
+  - MATCH,Auto Select
