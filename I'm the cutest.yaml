@@ -1,59 +1,184 @@
+mixed-port: 7896
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: "127.0.0.1:9097"
+unified-delay: true
+ipv6: true
 dns:
   enable: true
+  listen: "0.0.0.0:35353"
+  ipv6: true
+  default-nameserver: [119.29.29.29, 180.76.76.76, 223.5.5.5]
   enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    [
+      "*.lan",
+      "stun.*.*.*",
+      "stun.*.*",
+      time.windows.com,
+      time.nist.gov,
+      time.apple.com,
+      time.asia.apple.com,
+      "*.ntp.org.cn",
+      "*.openwrt.pool.ntp.org",
+      time1.cloud.tencent.com,
+      time.ustc.edu.cn,
+      pool.ntp.org,
+      ntp.ubuntu.com,
+      ntp.aliyun.com,
+      ntp1.aliyun.com,
+      ntp2.aliyun.com,
+      ntp3.aliyun.com,
+      ntp4.aliyun.com,
+      ntp5.aliyun.com,
+      ntp6.aliyun.com,
+      ntp7.aliyun.com,
+      time1.aliyun.com,
+      time2.aliyun.com,
+      time3.aliyun.com,
+      time4.aliyun.com,
+      time5.aliyun.com,
+      time6.aliyun.com,
+      time7.aliyun.com,
+      "*.time.edu.cn",
+      time1.apple.com,
+      time2.apple.com,
+      time3.apple.com,
+      time4.apple.com,
+      time5.apple.com,
+      time6.apple.com,
+      time7.apple.com,
+      time1.google.com,
+      time2.google.com,
+      time3.google.com,
+      time4.google.com,
+      music.163.com,
+      "*.music.163.com",
+      "*.126.net",
+      musicapi.taihe.com,
+      music.taihe.com,
+      songsearch.kugou.com,
+      trackercdn.kugou.com,
+      "*.kuwo.cn",
+      api-jooxtt.sanook.com,
+      api.joox.com,
+      joox.com,
+      y.qq.com,
+      "*.y.qq.com",
+      streamoc.music.tc.qq.com,
+      mobileoc.music.tc.qq.com,
+      isure.stream.qqmusic.qq.com,
+      dl.stream.qqmusic.qq.com,
+      aqqmusic.tc.qq.com,
+      amobile.music.tc.qq.com,
+      "*.xiami.com",
+      "*.music.migu.cn",
+      music.migu.cn,
+      "*.msftconnecttest.com",
+      "*.msftncsi.com",
+      localhost.ptlogin2.qq.com,
+      "*.*.*.srv.nintendo.net",
+      "*.*.stun.playstation.net",
+      "xbox.*.*.microsoft.com",
+      "*.ipv6.microsoft.com",
+      "*.*.xboxlive.com",
+      speedtest.cros.wr.pvp.net,
+    ]
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    [
+      119.29.29.29,
+      180.76.76.76,
+      "https://223.6.6.6/dns-query",
+      "https://doh.pub/dns-query",
+      "https://dns.alidns.com/dns-query",
+    ]
   fallback:
-    - tls://dns.google
+    [
+      "https://cloudflare-dns.com/dns-query",
+      "tls://1.0.0.1:853",
+      208.67.222.222,
+      "https://dns.opendns.com/dns-query",
+    ]
   fallback-filter:
-    geoip: true
-    ipcidr:
-      - 240.0.0.0/4
-
+    {
+      geoip: true,
+      ipcidr: [240.0.0.0/4, 0.0.0.0/32, 127.0.0.1/32],
+      domain:
+        [
+          +.google.com,
+          +.facebook.com,
+          +.twitter.com,
+          +.youtube.com,
+          +.xn--ngstr-lra8j.com,
+          +.google.cn,
+          +.googleapis.cn,
+          +.googleapis.com,
+          +.gvt1.com,
+        ],
+    }
 proxy:
-  - name: Hysteria2 韩国
-    type: hysteria2
-    server: 193.123.232.176
-    port: 8443
-    up: "300 Mbps" 
-    down: "300 Mbps"
-    password: b3ba90371366f146
-    sni: bing.com
-    alpn:
-      - h3
-
-  - name: Hysteria2 美国
-    type: hysteria2
-    server: 23.94.255.112
-    port: 8443
-    up: "300 Mbps"
-    down: "300 Mbps"
-    password: ec4a39403fe3b7d8
-    sni: bing.com
-    alpn:
-      - h3
-
-  - name: Hysteria2 香港
-    type: hysteria2
-    server: 50.114.159.50
-    port: 8443
-    up: "300 Mbps"
-    down: "300 Mbps"
-    password: ddab9aec23b13eeb
-    sni: bing.com
-    alpn:
-      - h3
-
+  - {
+      name: Hysteria2 韩国,
+      server: 193.123.232.176,
+      port: 8443,
+      udp: true,
+      skip-cert-verify: true,
+      sni: bing.com,
+      type: hysteria2,
+      password: b3ba90371366f146,
+      up: 300,
+      down: 300,
+      lazy: false,
+    }
+  - {
+      name: Hysteria2 美国,
+      server: 23.94.255.112,
+      port: 8443,
+      udp: true,
+      skip-cert-verify: true,
+      sni: bing.com,
+      type: hysteria2,
+      password: ec4a39403fe3b7d8,
+      up: 300,
+      down: 300,
+      lazy: false,
+    }
+  - {
+      name: Hysteria2 香港,
+      server: 50.114.159.50,
+      port: 8443,
+      udp: true,
+      skip-cert-verify: true,
+      sni: bing.com,
+      type: hysteria2,
+      password: ddab9aec23b13eeb,
+      up: 300,
+      down: 300,
+      lazy: false,
+    }
 proxy-groups:
-  - name: Auto Select
-    type: url-test
-    proxies:
-      - Hysteria2 韩国
-      - Hysteria2 美国
-      - Hysteria2 香港
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
+  - {
+      name: 代理节点选择,
+      type: select,
+      proxies:
+        [自动选择, 故障转移, Hysteria2 韩国, Hysteria2 美国, Hysteria2 香港],
+    }
+  - {
+      name: 自动选择,
+      type: url-test,
+      proxies: [Hysteria2 韩国, Hysteria2 美国, Hysteria2 香港],
+      url: "http://cp.cloudflare.com",
+      interval: 3600,
+    }
+  - {
+      name: 故障转移,
+      type: fallback,
+      proxies: [Hysteria2 韩国, Hysteria2 美国, Hysteria2 香港],
+      url: "http://cp.cloudflare.com",
+      interval: 450,
+    }
 
 rules:
   - GEOIP,CN,DIRECT
